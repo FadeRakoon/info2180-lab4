@@ -84,13 +84,13 @@ if ($sanitizedQuery == ""):
 else:
     // echo "Query: " . $sanitizedQuery;
     foreach ($superheroes as $superhero) :
-        if ($superhero["alias"] == $sanitizedQuery || $superhero["name"] == $sanitizedQuery):
+        if (strcasecmp($superhero["alias"], $sanitizedQuery) == 0 || strcasecmp($superhero["name"], $sanitizedQuery) == 0):
             echo "<h3>" . $superhero["alias"] . "</h3>";
             echo "<h4>" . $superhero["name"] . "</h4>";
             echo "<p>" . $superhero["biography"] . "</p>";
             exit();
         elseif ($superhero["id"]>=10):
-            echo "Superhero not found";
+            echo "<p id=\"error\"> Superhero not found <p>";
         endif;
     endforeach;
 endif;
